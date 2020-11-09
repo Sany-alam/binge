@@ -63,7 +63,7 @@
     <div class="row">
         <div class="col-md-10 col-sm-10 col-10 offset-md-1 offset-sm-1 main_page">
             <div class=" my-3 d-flex justify-content-end">
-                <button class="btn btn-success">Ad User</button>
+                <a href="{{url('admin/add-user')}}" class="btn btn-success">Add User</a>
             </div>
             <div class="my-3 table-responsive">
                 <table class="table  table-bordered">

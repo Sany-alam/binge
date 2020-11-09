@@ -17,8 +17,19 @@ Route::view('/', 'app');
 
 Route::group(['prefix' => 'admin'], function () {
     Route::view('/', 'admin.home');
+    Route::view('/add-user', 'admin.add_user');
     Route::view('/user-creation', 'admin.user_creation');
     Route::view('/new-order', 'admin.new_order');
     Route::view('/report', 'admin.report');
     Route::view('/order-generator', 'admin.order_generator');
+});
+
+Route::group(['prefix' => 'salesman'], function () {
+    Route::view('/', 'salesman.home');
+    Route::view('/new-order', 'salesman.new_order');
+    Route::view('/pending-order', 'salesman.pending_order');
+    // Route::view('/user-creation', 'admin.user_creation');
+    // Route::view('/new-order', 'admin.new_order');
+    // Route::view('/report', 'admin.report');
+    // Route::view('/order-generator', 'admin.order_generator');
 });

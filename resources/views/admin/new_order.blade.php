@@ -17,6 +17,16 @@
         border-radius: .25rem;
         transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
     }
+    table.dataTable{
+        font-size: 11px;
+    }
+    table.table td, table.table th {
+        /* padding: .50rem!important; */
+        padding-top: 0.25rem!important;
+        padding-right: 0.25rem!important;
+        padding-bottom: 0.25rem!important;
+        padding-left: 0.25rem!important;
+    }
     table.dataTable thead th, table.dataTable thead td{
         padding: 0px;
     }
@@ -56,40 +66,51 @@
 
     <div class="row">
         <div class="col-md-10 col-sm-10 col-10 offset-md-1 offset-sm-10 breadcumb">
-            <p  class= "text-right">Home/User Creation</p>
+            <p  class= "text-right">Home/New Order</p>
         </div>
     </div>
 
     <div class="row">
         <div class="col-md-10 col-sm-10 col-10 offset-md-1 offset-sm-1 main_page">
-            <div class=" my-3 d-flex justify-content-end">
-                <button class="btn btn-success">Ad User</button>
-            </div>
             <div class="my-3 table-responsive">
-                <table class="table  table-bordered">
+                <table class="table table-bordered">
                     <thead>
                         <tr>
-                            <th>Sl no</th>
-                            <th>Name</th>
-                            <th>User name</th>
-                            <th>Phone number</th>
-                            <th>Role</th>
-                            <th>Default password</th>
-                            <th></th>
-                            <th></th>
+                            <th>Order no</th>
+                            <th>Customer Name</th>
+                            <th>Ticked</th>
+                            <th>Customer Phone number</th>
+                            <th>Customer Address</th>
+                            <th>Special Instruction</th>
+                            <th>Order Generator</th>
+                            <th>Order Date and Time</th>
+                            <th>Assign Delivery Partner</th>
+                            <th>Remarks</th>
                         </tr>
                     </thead>
                     <tbody>
                      @for ($i = 0; $i < 20; $i++)
                      <tr>
-                        <td>1</td>
-                        <td>asdaf</td>
-                        <td>dfsdf</td>
-                        <td>284648</td>
-                        <td>assda</td>
-                        <td>asd</td>
-                        <td class="text-center"><a href="#"><img style="width:20px" src="{{asset('assets/image/edit.png')}}" alt=""></a></td>
-                        <td class="text-center"><a href="#"><img style="width:20px" src="{{asset('assets/image/delete.png')}}" alt=""></a></td>
+                        <td>{{$i}}</td>
+                        <td>ticket</td>
+                        <td>Ticked</td>
+                        <td>0187665656</td>
+                        <td>test Address</td>
+                        <td>test Instruction</td>
+                        <td>Order Generator</td>
+                        <td>as</td>
+                        <td>
+                            <select class="form-control" id="exampleFormControlSelect1">
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                            </select>
+                        </td>
+                        <td>
+                            <input type="text" class="form-control">
+                        </td>
                     </tr>
                      @endfor
                     </tbody>
@@ -106,7 +127,7 @@
             searching: false,
             paging: true,
             info: false,
-            scrollY: 240,
+            scrollY: 300,
             bJQueryUI: true,
         });
     })
