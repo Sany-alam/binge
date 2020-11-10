@@ -12,7 +12,7 @@ class AdminController extends Controller
     //
     public function add_user(Request $request)
     {
-    
+
       $this->validation($request);
       $request['password']=Hash::make($request->password);
       user::create($request->except('password_confirmation'));
@@ -27,7 +27,7 @@ class AdminController extends Controller
             'password' => 'required|confirmed',
             'phone_number' => 'required',
             'user_role'=>'required'
-           
+
         ]);
     }
 
@@ -38,12 +38,12 @@ class AdminController extends Controller
             'user_name'=>'required|unique:users',
             'phone_number' => 'required',
             'user_role'=>'required'
-           
+
         ]);
         user::where('id',$request->user_id)->update(['name'=>$request->name,'user_name'=>$request->user_name,'phone_number'=>$request->phone_number,'user_role'=>$request->user_role]);
         return redirect()->route('show_all_user')->with('success','Password Update Successfully');;
     }
-    
+
     public function show_all_user()
     {
         $users = User::get();
@@ -54,13 +54,13 @@ class AdminController extends Controller
         $user_id = $request->id;
         return view('admin.update_password',['user_id'=>$user_id]);
     }
-    
+
     public function update_user_password(Request $request)
     {
         $request->validate([
-          
+
             'password' => 'required|confirmed',
-           
+
         ]);
         $user_id = $request->id;
         $password = Hash::make($request->password);
