@@ -59,7 +59,7 @@
 
     <div class="row">
         <div class="col-md-10 col-sm-10 col-10 offset-md-1 offset-sm-10 breadcumb">
-            <p  class= "text-right">Home/User Creation/Add User</p>
+            <p  class= "text-right">Home/Order Generate</p>
         </div>
 
 
@@ -104,17 +104,16 @@
                     <input type="text" class="form-control" name="ticket_no" id="re-password" placeholder="Ticket No">
 
                     <select style="padding: 0px 20px 0 10px;" name="source_of_lead" class="form-control" id="exampleFormControlSelect1">
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
+                        @foreach($source_of_leads as $source_of_lead)
+                        <option value="{{$source_of_lead->name}}">{{$source_of_lead->name}}</option>
+                        @endforeach
+                      
                     </select>
 
 
                     <input type="text" class="form-control" name="customer_address" id="re-password" placeholder="Customer Address">
 
-                    <input type="text" class="form-control" name="customer_phone_number" id="Phone number" placeholder="Customer Phone Number">
+                    <input type="text" class="form-control" name="customer_phone_no" id="Phone number" placeholder="Customer Phone Number">
                     <textarea class="form-control" name="customer_instruction" id="exampleFormControlTextarea1" rows="3"></textarea>
                     <div class="text-right mt-3">
                         <button type="submit" class="btn btn-success">Confirm</button>

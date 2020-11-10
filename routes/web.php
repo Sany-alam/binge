@@ -19,11 +19,11 @@ Route::post('submit_order','AdminController@submit_order')->name('submit_order')
 Route::group(['prefix' => 'admin'], function () {
     Route::view('/', 'admin.home');
     Route::view('/add-user', 'admin.add_user');
-    Route::get('order-generate',"AdminController@order_generate");
+    Route::get('order-generate',"AdminController@order_generate")->name('order-generate');
     Route::get('user-creation', 'AdminController@show_all_user')->name('show_all_user');
     Route::view('/new-order', 'admin.new_order');
     Route::view('/report', 'admin.report');
-    Route::view('/order-generator', 'admin.order_generator');
+    
     Route::get('edit_user/{id}','AdminController@edit_user');
     Route::get('update_password/{id}','AdminController@update_password');
     Route::post('add_user',"AdminController@add_user")->name('add_user');

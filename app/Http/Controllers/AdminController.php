@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\order;
+use App\Models\source_of_lead;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 
@@ -46,13 +47,20 @@ class AdminController extends Controller
     }
     public function submit_order(Request $request)
     {
+        $request->validate([
+            'customer_name'=>'required',
+            'customer_phone_no'=>'required',
+            'customer_address'=>'required',
+            'source_of_lead'=>'required'
+
+        ]);
         date_default_timezone_set("Asia/Dhaka");
         $order_no = $request->order_no;
         $customer_name = $request->customer_name;
         $ticket_no = $request->ticket_no;
         $source_of_lead = "test";
         $customer_address = $request->customer_address;
-        $customer_phone_number = $request->customer_phone_number;
+        $customer_phone_number = $request->customer_phone_no;
         $customer_instruction = $request->customer_instruction;
         $order_generated_by = 1;//Auth
         $order_generated_date_time = date('d-m-Y h:i:s');
@@ -66,6 +74,7 @@ class AdminController extends Controller
         'order_generated_date_time'=>$order_generated_date_time
         
         ]);
+        return redirect()->route('order-generate')->with('success','Order Created Successfully');
 
 
 
@@ -97,8 +106,9 @@ class AdminController extends Controller
         return redirect()->route('show_all_user')->with('success','Password Update Successfully');
     }
     public function order_generate()
-    {
-        return view('admin.order_generate');
+    {   
+        $source_of_lead = source_of_lead::get();
+        return view('admin.order_generate',['source_of_leads'=>$source_of_lead]);
     }
     public function edit_user(Request $request)
     {

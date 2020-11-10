@@ -1,5 +1,6 @@
 @extends('app')
 @section('css')
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
 <style>
     .search.form-control {
         margin-top: 12px;
@@ -44,6 +45,16 @@
     .dataTables_length{
         display: none!important;
     }
+    .dataTables_scrollBody{
+        height:295px !important;
+        max-height:295px !important;
+        border:none !important;
+    }
+    .daterangepicker{
+        left:106px !important;
+    }
+
+
 </style>
 @endsection
 @section('body')
@@ -70,22 +81,37 @@
 
     <div class="row">
         <div class="col-md-10 col-sm-10 col-10 offset-md-1 offset-sm-1 main_page">
+        <form>
            <div class="row">
+           
                 <div class="col-2">
                    <input type="number" class="search form-control" placeholder="Order no.">
                 </div>
-                <div class="col-4">
-                   <input type="date" class="search form-control" placeholder="From Date">
+                <div class="col-3">
+                <input type="text" class="search form-control" name="daterange" value="Select Date Range" />
+                   
                 </div>
-                <div class="col-4">
-                   <input type="date" class="search form-control" placeholder="To Date">
+                <div class="col-2">
+                   <select name="" id="" class="search form-control">
+                       <option value="">DP</option>
+                   </select>
+                </div>
+
+                <div class="col-2">
+                   <select name="" id="" class="search form-control">
+                       <option value="">OG</option>
+                   </select>
                 </div>
                 <div class="col-2">
                    <select name="" id="" class="search form-control">
                        <option value="">Delivery Status</option>
                    </select>
                 </div>
+                <div class="col-1">
+                  <button class="search form-control">S</button>
+                </div>
            </div>
+           </form>
             <div class="my-3 table-responsive">
                 <table class="table  table-bordered">
                     <thead>
@@ -119,104 +145,9 @@
                          <td>Delivery completed Date & time</td>
                          <td>Status</td>
                      </tr>
-                     <tr>
-                         <td>Order No</td>
-                         <td>Customer Name</td>
-                         <td>Customer Pdone number</td>
-                         <td>Ticket</td>
-                         <td>Customer Address</td>
-                         <td>Customer Instruction</td>
-                         <td>Admin Instruction</td>
-                         <td>Source of lead</td>
-                         <td>Delivery Partner</td>
-                         <td>Order Generator Date & Time</td>
-                         <td>Delivery completed Date & time</td>
-                         <td>Status</td>
-                     </tr>
-                     <tr>
-                         <td>Order No</td>
-                         <td>Customer Name</td>
-                         <td>Customer Pdone number</td>
-                         <td>Ticket</td>
-                         <td>Customer Address</td>
-                         <td>Customer Instruction</td>
-                         <td>Admin Instruction</td>
-                         <td>Source of lead</td>
-                         <td>Delivery Partner</td>
-                         <td>Order Generator Date & Time</td>
-                         <td>Delivery completed Date & time</td>
-                         <td>Status</td>
-                     </tr>
-                     <tr>
-                         <td>Order No</td>
-                         <td>Customer Name</td>
-                         <td>Customer Pdone number</td>
-                         <td>Ticket</td>
-                         <td>Customer Address</td>
-                         <td>Customer Instruction</td>
-                         <td>Admin Instruction</td>
-                         <td>Source of lead</td>
-                         <td>Delivery Partner</td>
-                         <td>Order Generator Date & Time</td>
-                         <td>Delivery completed Date & time</td>
-                         <td>Status</td>
-                     </tr>
-                     <tr>
-                         <td>Order No</td>
-                         <td>Customer Name</td>
-                         <td>Customer Pdone number</td>
-                         <td>Ticket</td>
-                         <td>Customer Address</td>
-                         <td>Customer Instruction</td>
-                         <td>Admin Instruction</td>
-                         <td>Source of lead</td>
-                         <td>Delivery Partner</td>
-                         <td>Order Generator Date & Time</td>
-                         <td>Delivery completed Date & time</td>
-                         <td>Status</td>
-                     </tr>
-                     <tr>
-                         <td>Order No</td>
-                         <td>Customer Name</td>
-                         <td>Customer Pdone number</td>
-                         <td>Ticket</td>
-                         <td>Customer Address</td>
-                         <td>Customer Instruction</td>
-                         <td>Admin Instruction</td>
-                         <td>Source of lead</td>
-                         <td>Delivery Partner</td>
-                         <td>Order Generator Date & Time</td>
-                         <td>Delivery completed Date & time</td>
-                         <td>Status</td>
-                     </tr>
-                     <tr>
-                         <td>Order No</td>
-                         <td>Customer Name</td>
-                         <td>Customer Pdone number</td>
-                         <td>Ticket</td>
-                         <td>Customer Address</td>
-                         <td>Customer Instruction</td>
-                         <td>Admin Instruction</td>
-                         <td>Source of lead</td>
-                         <td>Delivery Partner</td>
-                         <td>Order Generator Date & Time</td>
-                         <td>Delivery completed Date & time</td>
-                         <td>Status</td>
-                     </tr>
-                     <tr>
-                         <td>Order No</td>
-                         <td>Customer Name</td>
-                         <td>Customer Pdone number</td>
-                         <td>Ticket</td>
-                         <td>Customer Address</td>
-                         <td>Customer Instruction</td>
-                         <td>Admin Instruction</td>
-                         <td>Source of lead</td>
-                         <td>Delivery Partner</td>
-                         <td>Order Generator Date & Time</td>
-                         <td>Delivery completed Date & time</td>
-                         <td>Status</td>
-                     </tr>
+                     
+                    
+                     
                     </tbody>
                 </table>
             </div>
@@ -225,13 +156,26 @@
 </div>
 @endsection
 @section('js')
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+<script>
+
+</script>
 <script>
     $(function() {
+        $('input[name="daterange"]').daterangepicker({
+            opens: 'left'
+        }, function(start, end, label) {
+            //console.log("A new date selection was made: " + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'));
+        });
+
         $('.table').dataTable({
             searching: false,
             paging: true,
             info: false,
             scrollY: 300,
+            scrollx: 300,
             bJQueryUI: true,
         });
     })
