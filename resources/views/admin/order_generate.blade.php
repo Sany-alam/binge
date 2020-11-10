@@ -115,7 +115,7 @@
                     <input type="text" class="form-control" name="customer_address" id="re-password" placeholder="Customer Address">
 
                     <input type="text" class="form-control" name="customer_phone_number" id="Phone number" placeholder="Customer Phone Number">
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                    <textarea class="form-control" name="customer_instruction" id="exampleFormControlTextarea1" rows="3"></textarea>
                     <div class="text-right mt-3">
                         <button type="submit" class="btn btn-success">Confirm</button>
                     </div>
