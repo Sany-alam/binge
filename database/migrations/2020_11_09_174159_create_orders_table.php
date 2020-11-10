@@ -22,10 +22,12 @@ class CreateOrdersTable extends Migration
             $table->string('source_of_lead');
             $table->string('customer_instruction')->nullable();
             $table->string('admin_instruction')->nullable();
+            $table->integer('assign_delivery_partner_status')->default("0");
             $table->integer('order_received_status')->default("0");
             $table->integer("order_complete_status")->default("0");
             $table->bigInteger('order_generated_by')->unsigned();
-            $table->bigInteger('order_completed_by')->unsigned();
+            $table->bigInteger('order_completed_by')->unsigned()->nullable();
+            $table->bigInteger('delivery_partner')->unsigned()->nullable();
             $table->string("order_generated_date_time");
             $table->string('order_completed_date_time')->nullable();
             $table->string('admin_remarks')->nullable();
@@ -35,6 +37,7 @@ class CreateOrdersTable extends Migration
 
             $table->foreign('order_generated_by')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('order_completed_by')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('delivery_partner')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

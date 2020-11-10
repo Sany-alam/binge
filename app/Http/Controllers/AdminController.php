@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\order;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 
@@ -43,7 +44,34 @@ class AdminController extends Controller
         user::where('id',$request->user_id)->update(['name'=>$request->name,'user_name'=>$request->user_name,'phone_number'=>$request->phone_number,'user_role'=>$request->user_role]);
         return redirect()->route('show_all_user')->with('success','Password Update Successfully');;
     }
-    
+    public function submit_order(Request $request)
+    {
+        date_default_timezone_set("Asia/Dhaka");
+        $order_no = $request->order_no;
+        $customer_name = $request->customer_name;
+        $ticket_no = $request->ticket_no;
+        $source_of_lead = "test";
+        $customer_address = $request->customer_address;
+        $customer_phone_number = $request->customer_phone_number;
+        $customer_instruction = $request->customer_instruction;
+        $order_generated_by = 1;//Auth
+        $order_generated_date_time = date('d-m-Y h:i:s');
+        order::create(['customer_name'=>$customer_name,
+        'ticket_no'=>$ticket_no,
+        'customer_phone_no'=>$customer_phone_number,
+        'customer_address'=>$customer_address,
+        'source_of_lead'=>$source_of_lead,
+        'customer_instruction'=>$customer_instruction,
+        'order_generated_by'=>$order_generated_by,
+        'order_generated_date_time'=>$order_generated_date_time
+        
+        ]);
+
+
+
+        //file_put_contents('test.txt',$order_no." ".$customer_name." ".$ticket_no." ".$source_of_lead." ".$customer_address." ".$customer_phone_number." ".$customer_instruction);
+
+    }
     public function show_all_user()
     {
         $users = User::get();
