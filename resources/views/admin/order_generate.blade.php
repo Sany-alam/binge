@@ -103,7 +103,7 @@
                     <input type="text" class="form-control" name="customer_name" id="username" placeholder="Customer Name">
                     <input type="text" class="form-control" name="ticket_no" id="re-password" placeholder="Ticket No">
 
-                    <select name="source_of_lead" class="form-control" id="exampleFormControlSelect1">
+                    <select style="padding: 0px 20px 0 10px;" name="source_of_lead" class="form-control" id="exampleFormControlSelect1">
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
