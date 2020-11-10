@@ -59,7 +59,7 @@
 
     <div class="row">
         <div class="col-md-10 col-sm-10 col-10 offset-md-1 offset-sm-10 breadcumb">
-            <p  class= "text-right">Home/User Creation/Add User</p>
+            <p  class= "text-right">Home/User Creation/Edit User</p>
         </div>
         
 
@@ -86,29 +86,27 @@
     <div class="row">
         <div class="col-md-10 col-sm-10 col-10 offset-md-1 offset-sm-1 main_page_new_order">
             <div class="main_page_row_new_order">
-           <form action="{{route('add_user')}}" method="post">
+           <form action="{{route('update_user')}}" method="post">
            @csrf
                <div class="row">
                    <div class="col-md-3 p-0 m-0">
                     <label for="fullname" class="">Full Name</label>
                     <label for="username" class="">Username</label>
-                    <label for="password" class="">Password</label>
-                    <label for="re-password" class="">Re-Password</label>
                     <label class="">Role</label>
                     <label for="phoneNumber" class="">Phone Number</label>
                    </div>
                    <div class="col-md-9 p-0 m-0">
-                    <input type="text" class="form-control" name="name" id="fullname" placeholder="Full Name">
-                    <input type="text" class="form-control" name="user_name" id="username" placeholder="Username">
-                    <input type="text" class="form-control" name="password" id="password" placeholder="Password">
-                    <input type="text" class="form-control" name="password_confirmation" id="re-password" placeholder="Re-Password">
+                    <input type="text" class="form-control" name="name" id="fullname" placeholder="Full Name" value="{{$user->name}}">
+                    <input type="text" class="form-control" name="user_name" id="username" placeholder="Username"value="{{$user->user_name}}" >
+                    <input type="hidden" class="form-control" name="user_id" id="username" placeholder="Username"value="{{$user->id}}" >
+                  
                     <div class="form-inline" style="margin-top: 20px;">
                         <div class="form-check ml-2">
                             <input class="form-check-input" type="radio" name="user_role" id="admin" value="admin" checked>
                             <label class="form-check-label p-0" for="admin">Admin</label>
                         </div>
                         <div class="form-check ml-2">
-                            <input class="form-check-input" type="radio" name="user_role" id="order-generator" value="order-generator" checked>
+                            <input class="form-check-input" type="radio" name="user_role" id="order-generator" value="order-generator">
                             <label class="form-check-label p-0" for="order-generator">Order generator</label>
                         </div>
                         <div class="form-check ml-2">
@@ -124,7 +122,7 @@
                             <label class="form-check-label p-0" for="delivery-partner">Retailer</label>
                         </div>
                     </div>
-                    <input type="text" class="form-control" name="phone_number" id="Phone number" placeholder="Phone number">
+                    <input type="text" class="form-control" name="phone_number" id="Phone number" placeholder="Phone number" value="{{$user->phone_number}}">
                     <div class="text-right mt-3">
                         <button type="submit" class="btn btn-success">Confirm</button>
                     </div>

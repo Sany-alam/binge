@@ -14,14 +14,21 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::view('/', 'app');
+Route::post('submit_order','AdminController@submit_order')->name('submit_order');
 
 Route::group(['prefix' => 'admin'], function () {
     Route::view('/', 'admin.home');
     Route::view('/add-user', 'admin.add_user');
-    Route::view('/user-creation', 'admin.user_creation');
+    Route::get('order-generate',"AdminController@order_generate");
+    Route::get('user-creation', 'AdminController@show_all_user')->name('show_all_user');
     Route::view('/new-order', 'admin.new_order');
     Route::view('/report', 'admin.report');
     Route::view('/order-generator', 'admin.order_generator');
+    Route::get('edit_user/{id}','AdminController@edit_user');
+    Route::get('update_password/{id}','AdminController@update_password');
+    Route::post('add_user',"AdminController@add_user")->name('add_user');
+    Route::post('update_user',"AdminController@update_user")->name('update_user');
+    Route::post('update_user_password',"AdminController@update_user_password")->name('update_user_password');
 });
 
 Route::group(['prefix' => 'salesman'], function () {

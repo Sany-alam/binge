@@ -34,11 +34,6 @@
     .dataTables_length{
         display: none!important;
     }
-    .dataTables_scrollBody{
-        height:257px !important;
-        max-height:257px !important;
-        border:none !important;
-    }
 </style>
 @endsection
 @section('body')
@@ -65,21 +60,13 @@
         </div>
     </div>
 
-    @if(Session::has('success'))
-    <div class="col-md-10 col-sm-10 col-10 offset-md-1 offset-sm-10 alert alert-success" >
-                
-        {{Session::get('success')}}
-                
-        </div>
-    @endif
-    
     <div class="row">
         <div class="col-md-10 col-sm-10 col-10 offset-md-1 offset-sm-1 main_page">
             <div class=" my-3 d-flex justify-content-end">
                 <a href="{{url('admin/add-user')}}" class="btn btn-success">Add User</a>
             </div>
             <div class="my-3 table-responsive">
-                <table class="table  table-bordered">
+                <table class="table table-bordered">
                     <thead>
                         <tr>
                             <th>Sl no</th>
@@ -87,31 +74,24 @@
                             <th>User name</th>
                             <th>Phone number</th>
                             <th>Role</th>
-                            <th>Update Password</th>
-                            <th>Edit Data</th>
-                            <th>Delete Data</th>
+                            <th>Default password</th>
+                            <th></th>
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody>
-                     <?php
-                        $i=1;
-                     ?>
-                     @foreach($users as $user)
-                   
+                     @for ($i = 0; $i < 100; $i++)
                      <tr>
-                        <td>{{$i++}}</td>
-                        <td>{{$user->name}}</td>
-                        <td>{{$user->user_name}}</td>
-                        <td>{{$user->phone_number}}</td>
-                        <td>{{$user->user_role}}</td>
-                        <td class="text-center"><a href="update_password/{{$user->id}}"><img style="width:20px" src="{{asset('assets/image/edit.png')}}" alt=""></a></td>
-                      
-                        <td class="text-center"><a href="edit_user/{{$user->id}}"><img style="width:20px" src="{{asset('assets/image/edit.png')}}" alt=""></a></td>
+                        <td></td>
+                        <td>asdaf</td>
+                        <td>dfsdf</td>
+                        <td>284648</td>
+                        <td>assda</td>
+                        <td>asd</td>
+                        <td class="text-center"><a href="#"><img style="width:20px" src="{{asset('assets/image/edit.png')}}" alt=""></a></td>
                         <td class="text-center"><a href="#"><img style="width:20px" src="{{asset('assets/image/delete.png')}}" alt=""></a></td>
                     </tr>
-                   
-                     @endforeach
-
+                     @endfor
                     </tbody>
                 </table>
             </div>
@@ -121,10 +101,9 @@
 @endsection
 @section('js')
 <script>
- 
     $(function() {
         $('.table').dataTable({
-            searching: false,
+            searching: true,
             paging: true,
             info: false,
             scrollY: 240,

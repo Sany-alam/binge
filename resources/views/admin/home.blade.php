@@ -79,7 +79,7 @@
                     </div>
                 </a>
 
-                <a href="{{url('admin/order-generator')}}">
+                <a href="{{url('admin/order-generate')}}">
                     <div class="col-md-3 col-sm-3 col-3">
 
                         <div class="shadow p-4 mb-2 main_page_button">
