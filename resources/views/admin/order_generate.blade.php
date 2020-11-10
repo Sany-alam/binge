@@ -61,15 +61,15 @@
         <div class="col-md-10 col-sm-10 col-10 offset-md-1 offset-sm-10 breadcumb">
             <p  class= "text-right">Home/User Creation/Add User</p>
         </div>
-        
+
 
     </div>
 
     @if(Session::has('success'))
     <div class="col-md-10 col-sm-10 col-10 offset-md-1 offset-sm-10 alert alert-success" >
-                
+
         {{Session::get('success')}}
-                
+
         </div>
     @endif
 
@@ -82,7 +82,7 @@
                 </ul>
             </div>
      @endif
-   
+
     <div class="row">
         <div class="col-md-10 col-sm-10 col-10 offset-md-1 offset-sm-1 main_page_new_order">
             <div class="main_page_row_new_order">
@@ -102,18 +102,18 @@
                     <input type="text" class="form-control" name="order_no" id="fullname" placeholder="Full Name" value="1" disabled>
                     <input type="text" class="form-control" name="customer_name" id="username" placeholder="Customer Name">
                     <input type="text" class="form-control" name="ticket_no" id="re-password" placeholder="Ticket No">
-                    
+
                     <select name="source_of_lead" class="form-control" id="exampleFormControlSelect1">
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
                     </select>
-                    
-                  
+
+
                     <input type="text" class="form-control" name="customer_address" id="re-password" placeholder="Customer Address">
-                 
+
                     <input type="text" class="form-control" name="customer_phone_number" id="Phone number" placeholder="Customer Phone Number">
                     <textarea class="form-control" name="customer_instruction" id="exampleFormControlTextarea1" rows="3"></textarea>
                     <div class="text-right mt-3">
