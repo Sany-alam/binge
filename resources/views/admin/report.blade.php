@@ -50,13 +50,6 @@
         max-height:295px !important;
         border:none !important;
     }
-   
-    .daterangepicker{
-        left:106px !important;
-    }
-    
-
-
 </style>
 @endsection
 @section('body')
@@ -83,25 +76,26 @@
 
     <div class="row">
         <div class="col-md-10 col-sm-10 col-10 offset-md-1 offset-sm-1 main_page">
-        <form>
            <div class="row">
-           
                 <div class="col-2">
                    <input type="number" class="search form-control" placeholder="Order no.">
                 </div>
-                <div class="col-3">
-                <input type="text" class="search form-control" name="daterange" value="Select Date Range" />
+                <div class="col-2">
+                <input type="text" class="search form-control name="daterange" value="01/01/2018 - 01/15/2018" />
                    
                 </div>
                 <div class="col-2">
+                   <input type="date" class="search form-control" placeholder="To Date">
+                </div>
+                <div class="col-2">
                    <select name="" id="" class="search form-control">
-                       <option value="">DP</option>
+                       <option value="">Delivery Status</option>
                    </select>
                 </div>
 
                 <div class="col-2">
                    <select name="" id="" class="search form-control">
-                       <option value="">OG</option>
+                       <option value="">Delivery Status</option>
                    </select>
                 </div>
                 <div class="col-2">
@@ -109,11 +103,12 @@
                        <option value="">Delivery Status</option>
                    </select>
                 </div>
-                <div class="col-1">
-                  <button class="search form-control">S</button>
+                <div class="col-2">
+                   <select name="" id="" class="search form-control">
+                       <option value="">Delivery Status</option>
+                   </select>
                 </div>
            </div>
-           </form>
             <div class="my-3 table-responsive">
                 <table class="table  table-bordered">
                     <thead>
@@ -147,9 +142,104 @@
                          <td>Delivery completed Date & time</td>
                          <td>Status</td>
                      </tr>
-                     
-                    
-                     
+                     <tr>
+                         <td>Order No</td>
+                         <td>Customer Name</td>
+                         <td>Customer Pdone number</td>
+                         <td>Ticket</td>
+                         <td>Customer Address</td>
+                         <td>Customer Instruction</td>
+                         <td>Admin Instruction</td>
+                         <td>Source of lead</td>
+                         <td>Delivery Partner</td>
+                         <td>Order Generator Date & Time</td>
+                         <td>Delivery completed Date & time</td>
+                         <td>Status</td>
+                     </tr>
+                     <tr>
+                         <td>Order No</td>
+                         <td>Customer Name</td>
+                         <td>Customer Pdone number</td>
+                         <td>Ticket</td>
+                         <td>Customer Address</td>
+                         <td>Customer Instruction</td>
+                         <td>Admin Instruction</td>
+                         <td>Source of lead</td>
+                         <td>Delivery Partner</td>
+                         <td>Order Generator Date & Time</td>
+                         <td>Delivery completed Date & time</td>
+                         <td>Status</td>
+                     </tr>
+                     <tr>
+                         <td>Order No</td>
+                         <td>Customer Name</td>
+                         <td>Customer Pdone number</td>
+                         <td>Ticket</td>
+                         <td>Customer Address</td>
+                         <td>Customer Instruction</td>
+                         <td>Admin Instruction</td>
+                         <td>Source of lead</td>
+                         <td>Delivery Partner</td>
+                         <td>Order Generator Date & Time</td>
+                         <td>Delivery completed Date & time</td>
+                         <td>Status</td>
+                     </tr>
+                     <tr>
+                         <td>Order No</td>
+                         <td>Customer Name</td>
+                         <td>Customer Pdone number</td>
+                         <td>Ticket</td>
+                         <td>Customer Address</td>
+                         <td>Customer Instruction</td>
+                         <td>Admin Instruction</td>
+                         <td>Source of lead</td>
+                         <td>Delivery Partner</td>
+                         <td>Order Generator Date & Time</td>
+                         <td>Delivery completed Date & time</td>
+                         <td>Status</td>
+                     </tr>
+                     <tr>
+                         <td>Order No</td>
+                         <td>Customer Name</td>
+                         <td>Customer Pdone number</td>
+                         <td>Ticket</td>
+                         <td>Customer Address</td>
+                         <td>Customer Instruction</td>
+                         <td>Admin Instruction</td>
+                         <td>Source of lead</td>
+                         <td>Delivery Partner</td>
+                         <td>Order Generator Date & Time</td>
+                         <td>Delivery completed Date & time</td>
+                         <td>Status</td>
+                     </tr>
+                     <tr>
+                         <td>Order No</td>
+                         <td>Customer Name</td>
+                         <td>Customer Pdone number</td>
+                         <td>Ticket</td>
+                         <td>Customer Address</td>
+                         <td>Customer Instruction</td>
+                         <td>Admin Instruction</td>
+                         <td>Source of lead</td>
+                         <td>Delivery Partner</td>
+                         <td>Order Generator Date & Time</td>
+                         <td>Delivery completed Date & time</td>
+                         <td>Status</td>
+                     </tr>
+                     <tr>
+                         <td>Order No</td>
+                         <td>Customer Name</td>
+                         <td>Customer Pdone number</td>
+                         <td>Ticket</td>
+                         <td>Customer Address</td>
+                         <td>Customer Instruction</td>
+                         <td>Admin Instruction</td>
+                         <td>Source of lead</td>
+                         <td>Delivery Partner</td>
+                         <td>Order Generator Date & Time</td>
+                         <td>Delivery completed Date & time</td>
+                         <td>Status</td>
+                     </tr>
                     </tbody>
                 </table>
             </div>
@@ -162,23 +252,21 @@
 <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
 <script>
-
+$(function() {
+  $('input[name="daterange"]').daterangepicker({
+    opens: 'left'
+  }, function(start, end, label) {
+    console.log("A new date selection was made: " + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'));
+  });
+});
 </script>
 <script>
     $(function() {
-        $('input[name="daterange"]').daterangepicker({
-            opens: 'left'
-        }, function(start, end, label) {
-            //console.log("A new date selection was made: " + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'));
-        });
-
         $('.table').dataTable({
             searching: false,
             paging: true,
             info: false,
-           
-            sScrollX: "100%",
-            sScrollXInner: "110%",
+            scrollY: 300,
             bJQueryUI: true,
         });
     })

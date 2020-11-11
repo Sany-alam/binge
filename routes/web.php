@@ -22,7 +22,8 @@ Route::group(['prefix' => 'admin'], function () {
     Route::get('order-generate',"AdminController@order_generate")->name('order-generate');
     Route::get('user-creation', 'AdminController@show_all_user')->name('show_all_user');
     Route::view('/new-order', 'admin.new_order');
-    Route::view('/report', 'admin.report');
+    Route::get('report', 'AdminController@view_report_menue');
+    Route::post('show_report','AdminController@show_report')->name('show_report');
     
     Route::get('edit_user/{id}','AdminController@edit_user');
     Route::get('update_password/{id}','AdminController@update_password');

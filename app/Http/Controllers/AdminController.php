@@ -92,6 +92,18 @@ class AdminController extends Controller
         $user_id = $request->id;
         return view('admin.update_password',['user_id'=>$user_id]);
     }
+    public function view_report_menue()
+    {
+        $delivery_partner = user::where('user_role','delivery-partner')->get();
+        $order_generator = user::where('user_role','order-generator')->get();
+        return view('admin.report_menue',['delivery_partners'=>$delivery_partner,'order_generators'=>$order_generator]);
+    }
+    public function show_report(Request $request)
+    {
+            $from_date = date("d-m-Y", strtotime($request->from_date));
+            $to_date = date("d-m-Y", strtotime($request->to_date));
+          
+    } 
 
     public function update_user_password(Request $request)
     {
