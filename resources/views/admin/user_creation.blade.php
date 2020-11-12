@@ -46,8 +46,8 @@
     <div class="row">
 
         <div class="col-md-10 col-sm-10 col-10 offset-md-1 offset-sm-1 header_top_new_order d-flex align-items-center justify-content-between">
-            <h5 class="m-0 text-light">Home</h5>
-            <h5 class="m-0 text-light">Logged in as Admin <img style="width: 20px" src="{{asset('assets/image/loggedinAsAdmin.png')}}"></h5>
+            <h5 class="m-0 text-light"><a href="javascript:history.back()" style="text-decoration: none;" class="text-light mr-2"><</a> <a href="{{route('admin')}}" style="text-decoration: none;" class="text-light mr-2">Home</a></h5>
+            <h5 class="m-0 text-light">Logged in as Admin <a href="{{route('logout')}}"><img style="width: 20px" src="{{asset('assets/image/loggedinAsAdmin.png')}}"></a></h5>
         </div>
 
     </div>
@@ -67,12 +67,12 @@
 
     @if(Session::has('success'))
     <div class="col-md-10 col-sm-10 col-10 offset-md-1 offset-sm-10 alert alert-success" >
-                
+
         {{Session::get('success')}}
-                
+
         </div>
     @endif
-    
+
     <div class="row">
         <div class="col-md-10 col-sm-10 col-10 offset-md-1 offset-sm-1 main_page">
             <div class=" my-3 d-flex justify-content-end">
@@ -97,7 +97,7 @@
                         $i=1;
                      ?>
                      @foreach($users as $user)
-                   
+
                      <tr>
                         <td>{{$i++}}</td>
                         <td>{{$user->name}}</td>
@@ -105,11 +105,11 @@
                         <td>{{$user->phone_number}}</td>
                         <td>{{$user->user_role}}</td>
                         <td class="text-center"><a href="update_password/{{$user->id}}"><img style="width:20px" src="{{asset('assets/image/edit.png')}}" alt=""></a></td>
-                      
+
                         <td class="text-center"><a href="edit_user/{{$user->id}}"><img style="width:20px" src="{{asset('assets/image/edit.png')}}" alt=""></a></td>
                         <td class="text-center"><a href="#"><img style="width:20px" src="{{asset('assets/image/delete.png')}}" alt=""></a></td>
                     </tr>
-                   
+
                      @endforeach
 
                     </tbody>
@@ -121,7 +121,7 @@
 @endsection
 @section('js')
 <script>
- 
+
     $(function() {
         $('.table').dataTable({
             searching: false,

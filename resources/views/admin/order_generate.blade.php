@@ -44,8 +44,9 @@
 <div class="container-fluid">
     <div class="row">
 
-        <div class="col-md-10 col-sm-10 col-10 offset-md-1 offset-sm-1 header_top_new_order">
-
+        <div class="col-md-10 col-sm-10 col-10 offset-md-1 offset-sm-1 header_top_new_order d-flex align-items-center justify-content-between">
+            <h5 class="m-0 text-light"><a href="javascript:history.back()" style="text-decoration: none;" class="text-light mr-2"><</a> <a href="{{route('admin')}}" style="text-decoration: none;" class="text-light mr-2">Home</a></h5>
+            <h5 class="m-0 text-light">Logged in as Admin <a href="{{route('logout')}}"><img style="width: 20px" src="{{asset('assets/image/loggedinAsAdmin.png')}}"></a></h5>
         </div>
 
     </div>
@@ -107,7 +108,7 @@
                         @foreach($source_of_leads as $source_of_lead)
                         <option value="{{$source_of_lead->name}}">{{$source_of_lead->name}}</option>
                         @endforeach
-                      
+
                     </select>
 
 
