@@ -44,10 +44,15 @@
     .dataTables_length{
         display: none!important;
     }
+    .dataTables_scrollBody{
+        height:295px !important;
+        max-height:295px !important;
+        border:none !important;
+    }
 </style>
 @endsection
 @section('body')
-<div class="container container-sm">
+<div class="container-fluid">
     <div class="row">
 
         <div class="col-md-10 col-sm-10 col-10 offset-md-1 offset-sm-1 header_top d-flex align-items-center justify-content-between">
@@ -78,41 +83,45 @@
                         <tr>
                             <th>Order no</th>
                             <th>Customer Name</th>
-                            <th>Ticked</th>
+                            <th>Ticket</th>
                             <th>Customer Phone number</th>
                             <th>Customer Address</th>
-                            <th>Special Instruction</th>
+                            <th>Customer Instruction</th>
+                            <th>Source of lead</th>
                             <th>Order Generator</th>
                             <th>Order Date and Time</th>
                             <th>Assign Delivery Partner</th>
-                            <th>Remarks</th>
+                            <th>Admin Instruction</th>
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody>
-                     @for ($i = 0; $i < 20; $i++)
+                     @foreach($orders as $order)
                      <tr>
-                        <td>{{$i}}</td>
-                        <td>ticket</td>
-                        <td>Ticked</td>
-                        <td>0187665656</td>
-                        <td>test Address</td>
-                        <td>test Instruction</td>
-                        <td>Order Generator</td>
-                        <td>as</td>
+                        <td>{{$order->id}}</td>
+                        <td>{{$order->customer_name}}</td>
+                        <td>{{$order->ticket_no}}</td>
+                        <td>{{$order->customer_phone_no}}</td>
+                        <td>{{$order->customer_address}}</td>
+                        <td>{{$order->customer_instruction}}</td>
+                        <td>{{$order->source_of_lead}}</td>
+                        <td>{{$order->order_generator}}</td>
+                        <td>{{$order->order_generated_date_time}}</td>
+                        
+                      
                         <td>
-                            <select class="form-control" id="exampleFormControlSelect1">
-                                <option>1</option>
-                                <option>2</option>
-                                <option>3</option>
-                                <option>4</option>
-                                <option>5</option>
+                            <select class="form-control" id="delivery_partner">
+                            @foreach($delivery_partners as $delivery_partner)
+                        <option value="{{$delivery_partner->id}}">{{$delivery_partner->name}}</option>
+                        @endforeach
                             </select>
                         </td>
                         <td>
-                            <input type="text" class="form-control">
+                        <textarea class="form-control" name="customer_instruction" id="admin_instruction" rows="2"></textarea>
                         </td>
+                        <td><button class="btn btn-success btn-sm" onclick ="confirm_order('{{$order->id}}')">Confirm</button></td>
                     </tr>
-                     @endfor
+                     @endforeach
                     </tbody>
                 </table>
             </div>
@@ -123,13 +132,46 @@
 @section('js')
 <script>
     $(function() {
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+
         $('.table').dataTable({
             searching: false,
             paging: true,
             info: false,
-            scrollY: 300,
+            sScrollX: "100%",
+            sScrollXInner: "100%",
             bJQueryUI: true,
         });
     })
+
+    function confirm_order(order_no)
+    {
+        var delivery_partner = $("#delivery_partner").val();
+        var admin_instruction = document.getElementById("admin_instruction").value;
+        var formdata = new FormData();
+         formdata.append('order_id',order_no);
+         formdata.append('delivery_partner',delivery_partner);
+         formdata.append('admin_instruction',admin_instruction);
+       // alert(admin_instruction+" "+delivery_partner);
+        $.ajax({
+      processData: false,
+      contentType: false,
+      url:"confirm_order",
+      type:"POST",
+      data:formdata,
+      success:function(data,status){
+         
+        
+         location.reload();
+        
+
+      },
+
+    });
+    }
 </script>
 @endsection

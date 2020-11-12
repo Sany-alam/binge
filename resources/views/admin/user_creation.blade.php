@@ -42,7 +42,7 @@
 </style>
 @endsection
 @section('body')
-<div class="container container-sm">
+<div class="container-fluid">
     <div class="row">
 
         <div class="col-md-10 col-sm-10 col-10 offset-md-1 offset-sm-1 header_top_new_order d-flex align-items-center justify-content-between">

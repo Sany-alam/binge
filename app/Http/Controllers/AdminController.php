@@ -63,7 +63,7 @@ class AdminController extends Controller
         $customer_phone_number = $request->customer_phone_no;
         $customer_instruction = $request->customer_instruction;
         $order_generated_by = 1;//Auth
-        $order_generated_date_time = date('d-m-Y h:i:s');
+        $order_generated_date_time = date('Y-m-d G:i:s');
         order::create(['customer_name'=>$customer_name,
         'ticket_no'=>$ticket_no,
         'customer_phone_no'=>$customer_phone_number,
@@ -81,7 +81,25 @@ class AdminController extends Controller
         //file_put_contents('test.txt',$order_no." ".$customer_name." ".$ticket_no." ".$source_of_lead." ".$customer_address." ".$customer_phone_number." ".$customer_instruction);
 
     }
-
+    public function confirm_order(Request $request)
+    {
+        $order_id = $request->order_id;
+        $delivery_partner = $request->delivery_partner;
+        $admin_instruction = $request->admin_instruction;
+        order::where('id',$order_id)->update(['delivery_partner'=>$delivery_partner,"admin_instruction"=>$admin_instruction]);
+    }
+    public function show_new_order()
+    {
+        $orders = order::where('delivery_partner','=',NULL)->get();
+        $delivery_partner = user::where('user_role','delivery-partner')->get();
+        foreach($orders as $order)
+            {
+                
+                $order['order_generator'] =  user::where('id',$order->order_generated_by)->first()->name;
+               
+            }
+        return view('admin.new_order',["orders"=>$orders,'delivery_partners'=>$delivery_partner]);
+    }
     public function show_all_user()
     {
         $users = User::get();
@@ -100,11 +118,27 @@ class AdminController extends Controller
     }
     public function show_report(Request $request)
     {
-            $from_date = date("d-m-Y", strtotime($request->from_date));
-            $to_date = date("d-m-Y", strtotime($request->to_date));
+            $from_date = date("Y-m-d", strtotime($request->from_date));
+            $to_date = date("Y-m-d", strtotime($request->to_date."+1 days"));
+           //file_put_contents('test.txt',$from_date." ".$to_date);
             $delivery_partner = $request->delivery_partner;
             $order_generator = $request->order_generator;
-            $orders = order::get();
+           // $orders = order::get();
+            if($order_generator =='All' &&   $delivery_partner =="All")
+            {
+              // file_put_contents('test.txt','1');
+                $orders = order::whereBetween('order_generated_date_time',[$from_date,$to_date])->get();
+            }
+            else if($order_generator =='All' &&   $delivery_partner != "All")
+            {
+                //file_put_contents('test.txt','2');
+                $orders = order::whereBetween('order_generated_date_time',[$from_date,$to_date])->where('order_completed_by',$delivery_partner)->get();
+            }
+            else if($order_generator !='All' &&   $delivery_partner == "All")
+            {
+               // file_put_contents('test.txt','3');
+                $orders = order::whereBetween('order_generated_date_time',[$from_date,$to_date])->where('order_generated_by',$order_generator)->get();
+            }
             foreach($orders as $order)
             {
                 
@@ -121,18 +155,7 @@ class AdminController extends Controller
 
             return view('admin.report',['orders'=>$orders]);
             
-            // if($orde_generator =='All' &&   $delivery_partner =="All")
-            // {
-            //  $order = 
-            // }
-            // else if($orde_generator =='All' &&   $delivery_partner != "All")
-            // {
-
-            // }
-            // else if($orde_generator !='All' &&   $delivery_partner == "All")
-            // {
-
-            // }
+            
 
      
     } 

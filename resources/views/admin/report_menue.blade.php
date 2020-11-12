@@ -41,7 +41,7 @@
 </style>
 @endsection
 @section('body')
-<div class="container container-sm">
+<div class="container-fluid">
     <div class="row">
 
         <div class="col-md-10 col-sm-10 col-10 offset-md-1 offset-sm-1 header_top_new_order">
@@ -102,14 +102,14 @@
                    <select style="padding: 0px 20px 0 10px;" name="delivery_partner" class="form-control" id="exampleFormControlSelect1">
                         <option value="All">All</option>
                         @foreach($delivery_partners as $delivery_partner)
-                        <option value="{{$delivery_partner->name}}">{{$delivery_partner->name}}</option>
+                        <option value="{{$delivery_partner->id}}">{{$delivery_partner->name}}</option>
                         @endforeach
                       
                     </select>
                     <select style="padding: 0px 20px 0 10px;" name="order_generator" class="form-control" id="exampleFormControlSelect1">
                         <option value="All">All</option>
                         @foreach($order_generators as $order_generator)
-                        <option value="{{$order_generator->name}}">{{$order_generator->name}}</option>
+                        <option value="{{$order_generator->id}}">{{$order_generator->name}}</option>
                         @endforeach
                       
                     </select>
