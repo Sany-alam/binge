@@ -44,8 +44,9 @@
 <div class="container container-sm">
     <div class="row">
 
-        <div class="col-md-10 col-sm-10 col-10 offset-md-1 offset-sm-1 header_top_new_order">
-
+        <div class="col-md-10 col-sm-10 col-10 offset-md-1 offset-sm-1 header_top_new_order d-flex align-items-center justify-content-between">
+            <h5 class="m-0 text-light"><a href="javascript:history.back()" style="text-decoration: none;" class="text-light mr-2"><</a> <a href="{{route('admin')}}" style="text-decoration: none;" class="text-light mr-2">Home</a></h5>
+            <h5 class="m-0 text-light">Logged in as Admin <a href="{{route('logout')}}"><img style="width: 20px" src="{{asset('assets/image/loggedinAsAdmin.png')}}"></a></h5>
         </div>
 
     </div>
@@ -61,15 +62,15 @@
         <div class="col-md-10 col-sm-10 col-10 offset-md-1 offset-sm-10 breadcumb">
             <p  class= "text-right">Home/User Creation/Report Menue</p>
         </div>
-        
+
 
     </div>
 
     @if(Session::has('success'))
     <div class="col-md-10 col-sm-10 col-10 offset-md-1 offset-sm-10 alert alert-success" >
-                
+
         {{Session::get('success')}}
-                
+
         </div>
     @endif
 
@@ -82,7 +83,7 @@
                 </ul>
             </div>
      @endif
-   
+
     <div class="row">
         <div class="col-md-10 col-sm-10 col-10 offset-md-1 offset-sm-1 main_page_new_order">
             <div class="main_page_row_new_order">
@@ -94,7 +95,7 @@
                     <label for="username" class="">To Date</label>
                     <label for="password" class="">Delivery Partner</label>
                     <label for="re-password" class="">Order Generator</label>
-                   
+
                    </div>
                    <div class="col-md-9 p-0 m-0">
                    <input type="date" name="from_date" class="search form-control" placeholder="From Dates">
@@ -104,18 +105,18 @@
                         @foreach($delivery_partners as $delivery_partner)
                         <option value="{{$delivery_partner->name}}">{{$delivery_partner->name}}</option>
                         @endforeach
-                      
+
                     </select>
                     <select style="padding: 0px 20px 0 10px;" name="order_generator" class="form-control" id="exampleFormControlSelect1">
                         <option value="All">All</option>
                         @foreach($order_generators as $order_generator)
                         <option value="{{$order_generator->name}}">{{$order_generator->name}}</option>
                         @endforeach
-                      
+
                     </select>
-                  
-                  
-                
+
+
+
                     <div class="text-right mt-3">
                         <button type="submit" class="btn btn-success">Show Report</button>
                     </div>

@@ -16,15 +16,20 @@ use Illuminate\Support\Facades\Route;
 Route::view('/', 'app');
 Route::post('submit_order','AdminController@submit_order')->name('submit_order');
 
+Route::get('logout',function()
+{
+    // define logout here
+})->name('logout');
+
 Route::group(['prefix' => 'admin'], function () {
-    Route::view('/', 'admin.home');
+    Route::view('/', 'admin.home')->name('admin');
     Route::view('/add-user', 'admin.add_user');
     Route::get('order-generate',"AdminController@order_generate")->name('order-generate');
     Route::get('user-creation', 'AdminController@show_all_user')->name('show_all_user');
     Route::view('/new-order', 'admin.new_order');
     Route::get('report', 'AdminController@view_report_menue');
     Route::post('show_report','AdminController@show_report')->name('show_report');
-    
+
     Route::get('edit_user/{id}','AdminController@edit_user');
     Route::get('update_password/{id}','AdminController@update_password');
     Route::post('add_user',"AdminController@add_user")->name('add_user');

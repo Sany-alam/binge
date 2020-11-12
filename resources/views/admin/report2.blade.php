@@ -50,11 +50,11 @@
         max-height:295px !important;
         border:none !important;
     }
-   
+
     .daterangepicker{
         left:106px !important;
     }
-    
+
 
 
 </style>
@@ -63,8 +63,9 @@
 <div class="container container-sm">
     <div class="row">
 
-        <div class="col-md-10 col-sm-10 col-10 offset-md-1 offset-sm-1 header_top">
-
+        <div class="col-md-10 col-sm-10 col-10 offset-md-1 offset-sm-1 header_top_new_order d-flex align-items-center justify-content-between">
+            <h5 class="m-0 text-light"><a href="javascript:history.back()" style="text-decoration: none;" class="text-light mr-2"><</a> <a href="{{route('admin')}}" style="text-decoration: none;" class="text-light mr-2">Home</a></h5>
+            <h5 class="m-0 text-light">Logged in as Admin <a href="{{route('logout')}}"><img style="width: 20px" src="{{asset('assets/image/loggedinAsAdmin.png')}}"></a></h5>
         </div>
 
     </div>
@@ -85,13 +86,13 @@
         <div class="col-md-10 col-sm-10 col-10 offset-md-1 offset-sm-1 main_page">
         <form>
            <div class="row">
-           
+
                 <div class="col-2">
                    <input type="number" class="search form-control" placeholder="Order no.">
                 </div>
                 <div class="col-3">
                 <input type="text" class="search form-control" name="daterange" value="Select Date Range" />
-                   
+
                 </div>
                 <div class="col-2">
                    <select name="" id="" class="search form-control">
@@ -147,9 +148,9 @@
                          <td>Delivery completed Date & time</td>
                          <td>Status</td>
                      </tr>
-                     
-                    
-                     
+
+
+
                     </tbody>
                 </table>
             </div>
@@ -176,7 +177,7 @@
             searching: false,
             paging: true,
             info: false,
-           
+
             sScrollX: "100%",
             sScrollXInner: "110%",
             bJQueryUI: true,
