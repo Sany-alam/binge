@@ -23,7 +23,7 @@
     height: 140px;
     border: 1px solid black;
     margin-top: 6px;
-    background-image: url("header_bottom.png");
+    background-image: url("../image/header_bottom.png");
     background-size: 100% 100%;
    
 }
@@ -32,8 +32,12 @@
   height: 94px;
   border: 1px solid black;
   margin-top: 6px;
-  background-image: url("header_bottom.png");
+  background-image: url("../image/header_bottom.png");
   background-size: 100% 100%;
+}
+.header_bottom_new_order img{
+  height:90%;
+  width:15%;
 }
 .image_section{
 

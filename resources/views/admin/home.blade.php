@@ -15,16 +15,17 @@
 <div class="container-fluid">
     <div class="row">
 
-        <div class="col-md-10 col-sm-10 col-10 offset-md-1 offset-sm-1 header_top d-flex align-items-center justify-content-end">
-
-            <h5 class="m-0 text-light">Logged in as Admin <a href="{{route('logout')}}"><img style="width: 20px" src="{{asset('assets/image/loggedinAsAdmin.png')}}"></a></h5>
+        <div class="col-md-10 col-sm-10 col-10 offset-md-1 offset-sm-1 header_top d-flex align-items-center justify-content-between">
+          
+            <h5 class="m-0 text-light">Home</h5>
+            <h5 class="m-0 text-light">Logged in as Admin <img style="width: 20px" src="{{asset('assets/image/loggedinAsAdmin.png')}}"></h5>
         </div>
 
     </div>
 
     <div class="row">
-        <div class="col-md-10 col-sm-10 col-10 offset-md-1 offset-sm-1 header_bottom">
-
+        <div class="col-md-10 col-sm-10 col-10 offset-md-1 offset-sm-1 header_bottom text-center">
+        <img src="{{asset('assets')}}/image/logo_white.png">
         </div>
 
     </div>

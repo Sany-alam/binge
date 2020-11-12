@@ -52,8 +52,8 @@
     </div>
 
     <div class="row">
-        <div class="col-md-10 col-sm-10 col-10 offset-md-1 offset-sm-1 header_bottom_new_order">
-
+        <div class="col-md-10 col-sm-10 col-10 offset-md-1 offset-sm-1 header_bottom_new_order text-center">
+        <img src="{{asset('assets')}}/image/logo_white.png">
         </div>
 
     </div>
