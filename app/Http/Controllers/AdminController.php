@@ -102,7 +102,39 @@ class AdminController extends Controller
     {
             $from_date = date("d-m-Y", strtotime($request->from_date));
             $to_date = date("d-m-Y", strtotime($request->to_date));
-          
+            $delivery_partner = $request->delivery_partner;
+            $order_generator = $request->order_generator;
+            $orders = order::get();
+            foreach($orders as $order)
+            {
+                
+                $order['order_generator'] =  user::where('id',$order->order_generated_by)->first()->name;
+                if($order->delivery_partner !=NULL)
+                {
+                    $user_name = user::where('id',$order->delivery_partner)->first()->name;
+                    $order['delivery_partner'] = $user_name;
+                }
+                else{
+                    $order['delivery_partner'] ="Not Assigned";
+                }
+            }
+
+            return view('admin.report',['orders'=>$orders]);
+            
+            // if($orde_generator =='All' &&   $delivery_partner =="All")
+            // {
+            //  $order = 
+            // }
+            // else if($orde_generator =='All' &&   $delivery_partner != "All")
+            // {
+
+            // }
+            // else if($orde_generator !='All' &&   $delivery_partner == "All")
+            // {
+
+            // }
+
+     
     } 
 
     public function update_user_password(Request $request)

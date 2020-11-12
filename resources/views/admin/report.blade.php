@@ -76,39 +76,7 @@
 
     <div class="row">
         <div class="col-md-10 col-sm-10 col-10 offset-md-1 offset-sm-1 main_page">
-           <div class="row">
-                <div class="col-2">
-                   <input type="number" class="search form-control" placeholder="Order no.">
-                </div>
-                <div class="col-2">
-                <input type="text" class="search form-control name="daterange" value="01/01/2018 - 01/15/2018" />
-                   
-                </div>
-                <div class="col-2">
-                   <input type="date" class="search form-control" placeholder="To Date">
-                </div>
-                <div class="col-2">
-                   <select name="" id="" class="search form-control">
-                       <option value="">Delivery Status</option>
-                   </select>
-                </div>
-
-                <div class="col-2">
-                   <select name="" id="" class="search form-control">
-                       <option value="">Delivery Status</option>
-                   </select>
-                </div>
-                <div class="col-2">
-                   <select name="" id="" class="search form-control">
-                       <option value="">Delivery Status</option>
-                   </select>
-                </div>
-                <div class="col-2">
-                   <select name="" id="" class="search form-control">
-                       <option value="">Delivery Status</option>
-                   </select>
-                </div>
-           </div>
+           
             <div class="my-3 table-responsive">
                 <table class="table  table-bordered">
                     <thead>
@@ -121,125 +89,35 @@
                             <th>Customer Instruction</th>
                             <th>Admin Instruction</th>
                             <th>Source of lead</th>
+                            <th>Order Generator</th>
                             <th>Delivery Partner</th>
                             <th>Order Generator Date & Time</th>
                             <th>Delivery completed Date & time</th>
-                            <th>Status</th>
+                            <th>Delivery Complete</th>
                         </tr>
                     </thead>
                     <tbody>
+                    @foreach($orders as $order)
                      <tr>
-                         <td>Order No</td>
-                         <td>Customer Name</td>
-                         <td>Customer Pdone number</td>
-                         <td>Ticket</td>
-                         <td>Customer Address</td>
-                         <td>Customer Instruction</td>
-                         <td>Admin Instruction</td>
-                         <td>Source of lead</td>
-                         <td>Delivery Partner</td>
-                         <td>Order Generator Date & Time</td>
-                         <td>Delivery completed Date & time</td>
-                         <td>Status</td>
+                         <td>{{$order->id}}</td>
+                         <td>{{$order->customer_name}}</td>
+                         <td>{{$order->customer_phone_no}}</td>
+                         <td>{{$order->ticket_no}}</td>
+                         <td>{{$order->customer_address}}</td>
+                         <td>{{$order->customer_instruction}}</td>
+                         <td>{{$order->admin_instruction}}</td>
+                         <td>{{$order->source_of_lead}}</td>
+                         <td>{{$order->order_generator}}</td>
+                         <td>{{$order->delivery_partner}}</td>
+                         <td>{{$order->order_generated_date_time}}</td>
+                         <td>{{$order->order_completed_date_time}}</td>
+                         @if($order->order_complete_status == 1)
+                         <td class='text-success'>Complete</td>
+                         @else
+                         <td class='text-danger'>Pending</td>
+                         @endif
                      </tr>
-                     <tr>
-                         <td>Order No</td>
-                         <td>Customer Name</td>
-                         <td>Customer Pdone number</td>
-                         <td>Ticket</td>
-                         <td>Customer Address</td>
-                         <td>Customer Instruction</td>
-                         <td>Admin Instruction</td>
-                         <td>Source of lead</td>
-                         <td>Delivery Partner</td>
-                         <td>Order Generator Date & Time</td>
-                         <td>Delivery completed Date & time</td>
-                         <td>Status</td>
-                     </tr>
-                     <tr>
-                         <td>Order No</td>
-                         <td>Customer Name</td>
-                         <td>Customer Pdone number</td>
-                         <td>Ticket</td>
-                         <td>Customer Address</td>
-                         <td>Customer Instruction</td>
-                         <td>Admin Instruction</td>
-                         <td>Source of lead</td>
-                         <td>Delivery Partner</td>
-                         <td>Order Generator Date & Time</td>
-                         <td>Delivery completed Date & time</td>
-                         <td>Status</td>
-                     </tr>
-                     <tr>
-                         <td>Order No</td>
-                         <td>Customer Name</td>
-                         <td>Customer Pdone number</td>
-                         <td>Ticket</td>
-                         <td>Customer Address</td>
-                         <td>Customer Instruction</td>
-                         <td>Admin Instruction</td>
-                         <td>Source of lead</td>
-                         <td>Delivery Partner</td>
-                         <td>Order Generator Date & Time</td>
-                         <td>Delivery completed Date & time</td>
-                         <td>Status</td>
-                     </tr>
-                     <tr>
-                         <td>Order No</td>
-                         <td>Customer Name</td>
-                         <td>Customer Pdone number</td>
-                         <td>Ticket</td>
-                         <td>Customer Address</td>
-                         <td>Customer Instruction</td>
-                         <td>Admin Instruction</td>
-                         <td>Source of lead</td>
-                         <td>Delivery Partner</td>
-                         <td>Order Generator Date & Time</td>
-                         <td>Delivery completed Date & time</td>
-                         <td>Status</td>
-                     </tr>
-                     <tr>
-                         <td>Order No</td>
-                         <td>Customer Name</td>
-                         <td>Customer Pdone number</td>
-                         <td>Ticket</td>
-                         <td>Customer Address</td>
-                         <td>Customer Instruction</td>
-                         <td>Admin Instruction</td>
-                         <td>Source of lead</td>
-                         <td>Delivery Partner</td>
-                         <td>Order Generator Date & Time</td>
-                         <td>Delivery completed Date & time</td>
-                         <td>Status</td>
-                     </tr>
-                     <tr>
-                         <td>Order No</td>
-                         <td>Customer Name</td>
-                         <td>Customer Pdone number</td>
-                         <td>Ticket</td>
-                         <td>Customer Address</td>
-                         <td>Customer Instruction</td>
-                         <td>Admin Instruction</td>
-                         <td>Source of lead</td>
-                         <td>Delivery Partner</td>
-                         <td>Order Generator Date & Time</td>
-                         <td>Delivery completed Date & time</td>
-                         <td>Status</td>
-                     </tr>
-                     <tr>
-                         <td>Order No</td>
-                         <td>Customer Name</td>
-                         <td>Customer Pdone number</td>
-                         <td>Ticket</td>
-                         <td>Customer Address</td>
-                         <td>Customer Instruction</td>
-                         <td>Admin Instruction</td>
-                         <td>Source of lead</td>
-                         <td>Delivery Partner</td>
-                         <td>Order Generator Date & Time</td>
-                         <td>Delivery completed Date & time</td>
-                         <td>Status</td>
-                     </tr>
+                     @endforeach
                     </tbody>
                 </table>
             </div>
@@ -263,7 +141,7 @@ $(function() {
 <script>
     $(function() {
         $('.table').dataTable({
-            searching: false,
+            searching: true,
             paging: true,
             info: false,
             scrollY: 300,
