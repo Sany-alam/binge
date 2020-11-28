@@ -48,7 +48,7 @@ justify-content: center;
 align-items: center;
 }
 .main_page{
-    height: 400px;
+    position: relative;
     border:1px solid black;
     margin-top:6px;
     border-radius: 4px;
@@ -89,7 +89,7 @@ align-items: center;
 }
 
 .main_page_row{
-  margin-top:9%;
+  margin-top:5%;
   margin-left:5px;
   justify-content: center;
 }

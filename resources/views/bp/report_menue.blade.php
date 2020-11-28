@@ -60,7 +60,7 @@
 
     <div class="row">
         <div class="col-md-10 col-sm-10 col-10 offset-md-1 offset-sm-10 breadcumb">
-            <p  class= "text-right">Home/Order Generate</p>
+            <p  class= "text-right">Home/User Creation/Report Menue</p>
         </div>
 
 
@@ -87,37 +87,24 @@
     <div class="row">
         <div class="col-md-10 col-sm-10 col-10 offset-md-1 offset-sm-1 main_page_new_order">
             <div class="main_page_row_new_order">
-           <form action="{{route('submit_order_admin')}}" method="post">
+           <form action="{{route('show_report_bp')}}" method="post">
            @csrf
                <div class="row">
                    <div class="col-md-3 p-0 m-0">
-                    <label for="fullname" class="">Order No</label>
-                    <label for="username" class="">Customer Name</label>
-                    <label for="password" class="">Ticket No</label>
-                    <label for="re-password" class="">Source of lead</label>
-                    <label class="">Customer Address</label>
-                    <label for="phoneNumber" class="">Customer Phone Number</label>
-                    <label for="Customer Instruction" class="">Customer Instruction</label>
+                    <label for="fullname" class="">From Date</label>
+                    <label for="username" class="">To Date</label>
+                   
                    </div>
                    <div class="col-md-9 p-0 m-0">
-                    <input type="text" class="form-control" name="order_no" id="fullname" placeholder="Full Name" value="{{$order_no}}" disabled>
-                    <input type="text" class="form-control" name="customer_name" id="username" placeholder="Customer Name">
-                    <input type="text" class="form-control" name="ticket_no" id="re-password" placeholder="Ticket No">
-
-                    <select style="padding: 0px 20px 0 10px;" name="source_of_lead" class="form-control" id="exampleFormControlSelect1">
-                        @foreach($source_of_leads as $source_of_lead)
-                        <option value="{{$source_of_lead->name}}">{{$source_of_lead->name}}</option>
-                        @endforeach
-
-                    </select>
+                   <input type="date" name="from_date" class="search form-control" placeholder="From Dates">
+                   <input type="date" name="to_date" class="search form-control" placeholder="To Date">
+                   
+                  
 
 
-                    <input type="text" class="form-control" name="customer_address" id="re-password" placeholder="Customer Address">
 
-                    <input type="text" class="form-control" name="customer_phone_no" id="Phone number" placeholder="Customer Phone Number">
-                    <textarea class="form-control" name="customer_instruction" id="exampleFormControlTextarea1" rows="3"></textarea>
                     <div class="text-right mt-3">
-                        <button type="submit" class="btn btn-success">Confirm</button>
+                        <button type="submit" class="btn btn-success">Show Report</button>
                     </div>
                    </div>
                </div>

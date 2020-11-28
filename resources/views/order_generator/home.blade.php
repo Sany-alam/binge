@@ -28,7 +28,7 @@
     <div class="row">
         <div class="col-md-10 col-sm-10 col-10 offset-md-1 offset-sm-1 main_page">
             <div class="row main_page_row">
-                <a href="{{url('salesman/new-order')}}">
+                <a href="{{url('order-generator/order-generate')}}">
                     <div class="col-md-3 col-sm-3 col-3">
                         <div class="shadow p-4 mb-2 main_page_button">
                             <div class="image_section text-center">
@@ -37,29 +37,15 @@
 
                         </div>
                         <div class="button_text_section">
-                           <a href="#"  class="text-decoration-none"> <p class="text-center text-uppercase button_text">New Order</p></a>
+                           <a href="#"  class="text-decoration-none"> <p class="text-center text-uppercase button_text">Order Generate</p></a>
                         </div>
 
                     </div>
                 </a>
 
-                <a href="#">
-                    <div class="col-md-3 col-sm-3 col-3">
+               
 
-                        <div class="shadow p-4 mb-2 main_page_button text-center">
-                            <div class="image_section text-center">
-                                <img src="{{asset('assets/image/pending_order.png')}}" class="img-fluid">
-                            </div>
-
-                        </div>
-                        <div class="button_text_section">
-                           <a href="#"  class="text-decoration-none"> <p class="text-center text-uppercase button_text">Pending Order</p></a>
-                        </div>
-
-                    </div>
-                </a>
-
-                <a href="#">
+                <a href="{{url('order-generator/report')}}">
                     <div class="col-md-3 col-sm-3 col-3">
                         <div class="shadow p-4 mb-2 main_page_button">
                             <div class="image_section text-center">

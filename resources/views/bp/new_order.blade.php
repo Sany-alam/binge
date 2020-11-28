@@ -1,6 +1,5 @@
 @extends('app')
 @section('css')
-<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
 <style>
     .search.form-control {
         margin-top: 12px;
@@ -64,63 +63,64 @@
     </div>
 
     <div class="row">
-        <div class="col-md-10 col-sm-10 col-10 offset-md-1 offset-sm-1 header_bottom_new_order text-center">
+        <div class="col-md-10 col-sm-10 col-10 offset-md-1 offset-sm-1 header_bottom text-center">
         <img src="{{asset('assets')}}/image/logo_white.png">
         </div>
 
     </div>
+
     <div class="row">
         <div class="col-md-10 col-sm-10 col-10 offset-md-1 offset-sm-10 breadcumb">
-            <p  class= "text-right">Home/Report</p>
+            <p  class= "text-right">Home/New Order</p>
         </div>
     </div>
 
     <div class="row">
         <div class="col-md-10 col-sm-10 col-10 offset-md-1 offset-sm-1 main_page">
-        
             <div class="my-3 table-responsive">
-            <a href="{{url('admin/export_order_report')}}"><img style="width:35px" src="{{asset('assets/image/excel.png')}}" alt=""><span>Download as excel</span></a></td>
-                <table class="table  table-bordered">
+                <table class="table table-bordered">
                     <thead>
                         <tr>
-                           <th></th>
-                            <th>Order No</th>
+                            <th>Order no</th>
                             <th>Customer Name</th>
-                            <th>Customer Phone number</th>
                             <th>Ticket</th>
+                            <th>Customer Phone number</th>
                             <th>Customer Address</th>
                             <th>Customer Instruction</th>
-                            <th>Admin Instruction</th>
                             <th>Source of lead</th>
                             <th>Order Generator</th>
-                            <th>Delivery Partner</th>
-                            <th>Order Generator Date & Time</th>
-                            <th>Delivery completed Date & time</th>
-                            <th>Delivery Complete</th>
+                            <th>Order Date and Time</th>
+                            <th>Assign Delivery Partner</th>
+                            <th>Admin Instruction</th>
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody>
-                    @foreach($orders as $order)
+                     @foreach($orders as $order)
                      <tr>
-                     <td class="text-center"><a href="edit_report/{{$order->id}}"><img style="width:20px" src="{{asset('assets/image/edit.png')}}" alt=""></a></td>
-                         <td>{{$order->id}}</td>
-                         <td>{{$order->customer_name}}</td>
-                         <td>{{$order->customer_phone_no}}</td>
-                         <td>{{$order->ticket_no}}</td>
-                         <td>{{$order->customer_address}}</td>
-                         <td>{{$order->customer_instruction}}</td>
-                         <td>{{$order->admin_instruction}}</td>
-                         <td>{{$order->source_of_lead}}</td>
-                         <td>{{$order->order_generator}}</td>
-                         <td>{{$order->delivery_partner}}</td>
-                         <td>{{$order->order_generated_date_time}}</td>
-                         <td>{{$order->order_completed_date_time}}</td>
-                         @if($order->order_complete_status == 1)
-                         <td class='text-success'>Complete</td>
-                         @else
-                         <td class='text-danger'>Pending</td>
-                         @endif
-                     </tr>
+                        <td>{{$order->id}}</td>
+                        <td>{{$order->customer_name}}</td>
+                        <td>{{$order->ticket_no}}</td>
+                        <td>{{$order->customer_phone_no}}</td>
+                        <td>{{$order->customer_address}}</td>
+                        <td>{{$order->customer_instruction}}</td>
+                        <td>{{$order->source_of_lead}}</td>
+                        <td>{{$order->order_generator}}</td>
+                        <td>{{$order->order_generated_date_time}}</td>
+                        
+                      
+                        <td>
+                            <select class="form-control" id="delivery_partner">
+                            @foreach($delivery_partners as $delivery_partner)
+                        <option value="{{$delivery_partner->id}}">{{$delivery_partner->name}}</option>
+                        @endforeach
+                            </select>
+                        </td>
+                        <td>
+                        <textarea class="form-control" name="customer_instruction" id="admin_instruction" rows="2"></textarea>
+                        </td>
+                        <td><button class="btn btn-success btn-sm" onclick ="confirm_order('{{$order->id}}')">Confirm</button></td>
+                    </tr>
                      @endforeach
                     </tbody>
                 </table>
@@ -130,28 +130,48 @@
 </div>
 @endsection
 @section('js')
-
-<script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
-<script>
-$(function() {
-  $('input[name="daterange"]').daterangepicker({
-    opens: 'left'
-  }, function(start, end, label) {
-    console.log("A new date selection was made: " + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'));
-  });
-});
-</script>
 <script>
     $(function() {
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+
         $('.table').dataTable({
-            searching: true,
+            searching: false,
             paging: true,
             info: false,
             sScrollX: "100%",
-            sScrollXInner: "110%",
+            sScrollXInner: "100%",
             bJQueryUI: true,
         });
     })
+
+    function confirm_order(order_no)
+    {
+        var delivery_partner = $("#delivery_partner").val();
+        var admin_instruction = document.getElementById("admin_instruction").value;
+        var formdata = new FormData();
+         formdata.append('order_id',order_no);
+         formdata.append('delivery_partner',delivery_partner);
+         formdata.append('admin_instruction',admin_instruction);
+       // alert(admin_instruction+" "+delivery_partner);
+        $.ajax({
+      processData: false,
+      contentType: false,
+      url:"confirm_order",
+      type:"POST",
+      data:formdata,
+      success:function(data,status){
+         
+        
+         location.reload();
+        
+
+      },
+
+    });
+    }
 </script>
 @endsection

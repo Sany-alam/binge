@@ -87,7 +87,7 @@
     <div class="row">
         <div class="col-md-10 col-sm-10 col-10 offset-md-1 offset-sm-1 main_page_new_order">
             <div class="main_page_row_new_order">
-           <form action="{{route('submit_order_admin')}}" method="post">
+           <form action="{{route('submit_report_edit')}}" method="post">
            @csrf
                <div class="row">
                    <div class="col-md-3 p-0 m-0">
@@ -100,22 +100,28 @@
                     <label for="Customer Instruction" class="">Customer Instruction</label>
                    </div>
                    <div class="col-md-9 p-0 m-0">
-                    <input type="text" class="form-control" name="order_no" id="fullname" placeholder="Full Name" value="{{$order_no}}" disabled>
-                    <input type="text" class="form-control" name="customer_name" id="username" placeholder="Customer Name">
-                    <input type="text" class="form-control" name="ticket_no" id="re-password" placeholder="Ticket No">
+                   <input type="hidden" class="form-control" name="order_no" id="fullname" placeholder="Full Name" value="{{$order->id}}">
+                    <input type="text" class="form-control"  id="fullname" placeholder="Full Name" value="{{$order->id}}" disabled>
+                    <input type="text" class="form-control" name="customer_name" id="username" placeholder="Customer Name" value="{{$order->customer_name}}">
+                    <input type="text" class="form-control" name="ticket_no" id="re-password" placeholder="Ticket No" value="{{$order->ticket_no}}">
 
                     <select style="padding: 0px 20px 0 10px;" name="source_of_lead" class="form-control" id="exampleFormControlSelect1">
                         @foreach($source_of_leads as $source_of_lead)
+                        @if($source_of_lead->id== $order->source_of_lead)
+    
+                        <option value="{{$source_of_lead->name}}" selected>{{$source_of_lead->name}}</option>
+                        @else
                         <option value="{{$source_of_lead->name}}">{{$source_of_lead->name}}</option>
+                        @endif
                         @endforeach
 
                     </select>
 
 
-                    <input type="text" class="form-control" name="customer_address" id="re-password" placeholder="Customer Address">
+                    <input type="text" class="form-control" name="customer_address" id="re-password" placeholder="Customer Address" value="{{$order->customer_address}}">
 
-                    <input type="text" class="form-control" name="customer_phone_no" id="Phone number" placeholder="Customer Phone Number">
-                    <textarea class="form-control" name="customer_instruction" id="exampleFormControlTextarea1" rows="3"></textarea>
+                    <input type="text" class="form-control" name="customer_phone_no" id="Phone number" placeholder="Customer Phone Number" value = "{{$order->customer_phone_no}}">
+                    <textarea class="form-control" name="customer_instruction" id="exampleFormControlTextarea1" rows="3" >{{$order->customer_instruction}}</textarea>
                     <div class="text-right mt-3">
                         <button type="submit" class="btn btn-success">Confirm</button>
                     </div>

@@ -87,7 +87,7 @@
     <div class="row">
         <div class="col-md-10 col-sm-10 col-10 offset-md-1 offset-sm-1 main_page_new_order">
             <div class="main_page_row_new_order">
-           <form action="{{route('submit_order_admin')}}" method="post">
+           <form action="{{route('submit_order_order_generator')}}" method="post">
            @csrf
                <div class="row">
                    <div class="col-md-3 p-0 m-0">

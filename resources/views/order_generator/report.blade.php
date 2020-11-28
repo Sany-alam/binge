@@ -79,11 +79,9 @@
         <div class="col-md-10 col-sm-10 col-10 offset-md-1 offset-sm-1 main_page">
         
             <div class="my-3 table-responsive">
-            <a href="{{url('admin/export_order_report')}}"><img style="width:35px" src="{{asset('assets/image/excel.png')}}" alt=""><span>Download as excel</span></a></td>
                 <table class="table  table-bordered">
                     <thead>
                         <tr>
-                           <th></th>
                             <th>Order No</th>
                             <th>Customer Name</th>
                             <th>Customer Phone number</th>
@@ -92,7 +90,7 @@
                             <th>Customer Instruction</th>
                             <th>Admin Instruction</th>
                             <th>Source of lead</th>
-                            <th>Order Generator</th>
+                          
                             <th>Delivery Partner</th>
                             <th>Order Generator Date & Time</th>
                             <th>Delivery completed Date & time</th>
@@ -102,7 +100,6 @@
                     <tbody>
                     @foreach($orders as $order)
                      <tr>
-                     <td class="text-center"><a href="edit_report/{{$order->id}}"><img style="width:20px" src="{{asset('assets/image/edit.png')}}" alt=""></a></td>
                          <td>{{$order->id}}</td>
                          <td>{{$order->customer_name}}</td>
                          <td>{{$order->customer_phone_no}}</td>
@@ -111,7 +108,7 @@
                          <td>{{$order->customer_instruction}}</td>
                          <td>{{$order->admin_instruction}}</td>
                          <td>{{$order->source_of_lead}}</td>
-                         <td>{{$order->order_generator}}</td>
+                       
                          <td>{{$order->delivery_partner}}</td>
                          <td>{{$order->order_generated_date_time}}</td>
                          <td>{{$order->order_completed_date_time}}</td>

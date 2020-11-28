@@ -45,7 +45,7 @@
     <div class="row">
 
         <div class="col-md-10 col-sm-10 col-10 offset-md-1 offset-sm-1 header_top_new_order d-flex align-items-center justify-content-between">
-            <h5 class="m-0 text-light"><a href="javascript:history.back()" style="text-decoration: none;" class="text-light mr-2"><</a> <a href="{{route('admin')}}" style="text-decoration: none;" class="text-light mr-2">Home</a></h5>
+            <h5 class="m-0 text-light"><a href="{{URL::previous()}}" style="text-decoration: none;" class="text-light mr-2"><</a> <a href="{{route('admin')}}" style="text-decoration: none;" class="text-light mr-2">Home</a></h5>
             <h5 class="m-0 text-light">Logged in as Admin <a href="{{route('logout')}}"><img style="width: 20px" src="{{asset('assets/image/loggedinAsAdmin.png')}}"></a></h5>
         </div>
 
@@ -77,7 +77,7 @@
     @if ($errors->any())
             <div class="col-md-10 col-sm-10 col-10 offset-md-1 offset-sm-10 alert alert-danger" >
                 <ul>
-                    @foreach ($errors->all() as $error)
+                    @foreach($errors->all() as $error)
                         <li>{{ $error }}</li>
                     @endforeach
                 </ul>
@@ -87,35 +87,46 @@
     <div class="row">
         <div class="col-md-10 col-sm-10 col-10 offset-md-1 offset-sm-1 main_page_new_order">
             <div class="main_page_row_new_order">
-           <form action="{{route('submit_order_admin')}}" method="post">
+           <form action="{{route('submit_edit_report_bp')}}" method="post">
            @csrf
                <div class="row">
                    <div class="col-md-3 p-0 m-0">
                     <label for="fullname" class="">Order No</label>
-                    <label for="username" class="">Customer Name</label>
-                    <label for="password" class="">Ticket No</label>
-                    <label for="re-password" class="">Source of lead</label>
-                    <label class="">Customer Address</label>
-                    <label for="phoneNumber" class="">Customer Phone Number</label>
-                    <label for="Customer Instruction" class="">Customer Instruction</label>
+                    <label for="username" class="">Name</label>
+                    <label class="">Address</label>
+                    <label for="password" class="">Status</label>
+                    <label for="re-password" class="">Device Quantity</label>
+                    
+                    <label for="phoneNumber" class="">Device Serial Number</label>
+                    <label for="Customer Instruction" class="">Source</label>
+                    <label for="Customer Instruction" class="">Remarks</label>
                    </div>
                    <div class="col-md-9 p-0 m-0">
-                    <input type="text" class="form-control" name="order_no" id="fullname" placeholder="Full Name" value="{{$order_no}}" disabled>
-                    <input type="text" class="form-control" name="customer_name" id="username" placeholder="Customer Name">
-                    <input type="text" class="form-control" name="ticket_no" id="re-password" placeholder="Ticket No">
-
-                    <select style="padding: 0px 20px 0 10px;" name="source_of_lead" class="form-control" id="exampleFormControlSelect1">
+                   <input type="hidden" class="form-control" name="order_no" id="fullname" placeholder="Full Name" value="{{$order->id}}">
+                    <input type="text" class="form-control" name="order_no" id="fullname" placeholder="Full Name" value="{{$order->id}}" disabled>
+                    <input type="text" class="form-control" name="customer_name" id="username" placeholder="Customer Name" value="{{$order->customer_name}}"  >
+                    <input type="text" class="form-control" name="customer_address" id="re-password" placeholder="Customer Address" value="{{$order->customer_address}}" >
+                    <select style="padding: 0px 20px 0 10px;" name="sold_status" class="form-control" id="exampleFormControlSelect1">
+                       
+                        <option value="sold">Sold</option>
+                        <option value="unsold">Unsold</option>
+                      
+                    </select>
+                    <input type="text" class="form-control" name="device_quantity" id="username" placeholder="Device Quantity" value="{{$order->device_quantity}}" >
+                    <input type="text" class="form-control" name="device_serial_number" id="username" placeholder="Device Serial Number" value="{{$order->device_serial_number}}" >
+                    <select style="padding: 0px 20px 0 10px;" name="source_of_lead" class="form-control" id="exampleFormControlSelect1" >
                         @foreach($source_of_leads as $source_of_lead)
                         <option value="{{$source_of_lead->name}}">{{$source_of_lead->name}}</option>
                         @endforeach
 
                     </select>
+                    
 
 
-                    <input type="text" class="form-control" name="customer_address" id="re-password" placeholder="Customer Address">
+                   
 
-                    <input type="text" class="form-control" name="customer_phone_no" id="Phone number" placeholder="Customer Phone Number">
-                    <textarea class="form-control" name="customer_instruction" id="exampleFormControlTextarea1" rows="3"></textarea>
+                   
+                    <textarea class="form-control" name="brand_promoter_remarks" id="exampleFormControlTextarea1" rows="3">{{$order->brand_promoter_remarks}}</textarea>
                     <div class="text-right mt-3">
                         <button type="submit" class="btn btn-success">Confirm</button>
                     </div>
