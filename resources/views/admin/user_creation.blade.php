@@ -124,7 +124,7 @@
 
     $(function() {
         $('.table').dataTable({
-            searching: false,
+            searching: true,
             paging: true,
             info: false,
             scrollY: 240,

@@ -16,7 +16,7 @@ use Session;
 class AdminController extends Controller
 {
     //
-   
+
 
     public function export_data()
     {
@@ -86,7 +86,7 @@ class AdminController extends Controller
         'customer_instruction'=>$customer_instruction,
         'order_generated_by'=>$order_generated_by,
         'order_generated_date_time'=>$order_generated_date_time
-        
+
         ]);
         return redirect()->route('order-generate')->with('success','Order Created Successfully');
 
@@ -108,9 +108,9 @@ class AdminController extends Controller
         $delivery_partner = user::where('user_role','delivery-partner')->get();
         foreach($orders as $order)
             {
-                
+
                 $order['order_generator'] =  user::where('id',$order->order_generated_by)->first()->name;
-               
+
             }
         return view('admin.new_order',["orders"=>$orders,'delivery_partners'=>$delivery_partner]);
     }
@@ -135,7 +135,7 @@ class AdminController extends Controller
         $customer_phone_number = $request->customer_phone_no;
         $customer_instruction = $request->customer_instruction;
         $order_generated_by = 1;//Auth
-        
+
         //file_put_contents('test.txt',$order_no." ".$customer_name." ".$ticket_no." ".$source_of_lead." ".$customer_address." ".$customer_phone_number." ". $customer_instruction);
         order::where('id',$order_no)->update(['customer_name'=>$customer_name,
         'ticket_no'=>$ticket_no,
@@ -144,8 +144,8 @@ class AdminController extends Controller
         'source_of_lead'=>$source_of_lead,
         'customer_instruction'=>$customer_instruction,
         'order_generated_by'=>$order_generated_by,
-       
-        
+
+
         ]);
         $admin_order_report_credential = Session::get('admin_order_report_credential');
         //file_put_contents('test.txt',json_encode($bp_report_credential));
@@ -170,7 +170,7 @@ class AdminController extends Controller
         }
         foreach($orders as $order)
         {
-            
+
             $order['order_generator'] =  user::where('id',$order->order_generated_by)->first()->name;
             if($order->delivery_partner !=NULL)
             {
@@ -181,7 +181,7 @@ class AdminController extends Controller
                 $order['delivery_partner'] ="Not Assigned";
             }
 
-            
+
         }
         $order_list = array();
         foreach($orders as $order)
@@ -207,22 +207,22 @@ class AdminController extends Controller
             'Delivery Completed Data and Time'=>$order->order_completed_date_time,
             'Delivery Status'=>$delivery_status]);
         }
-  
+
        Session::push('order_list',$order_list);
         return view('admin.report',['orders'=>$orders]);
 
-        
+
     }
     public function bp_remarks(Request $request)
     {
         $order_id =$request->id;
-       
+
          return view('admin.bp-remarks',['id'=>$order_id]);
     }
     public function bp_remarks_submit(Request $request)
     {
         $id = $request->id;
-        
+
         //$user_id = 1;//Auth
         $report = brand_promoter::find($id);
         $report->update($request->all());
@@ -246,7 +246,7 @@ class AdminController extends Controller
         }
         return view('admin.report-bp',['orders'=>$orders]);
        // $orders = brand_promoter::whereBetween('created_at',[$from_date,$to_date])->where('brand_promoter_id',$user_id)->get();
-      
+
         // return view('bp.report',['orders'=>$orders]);
     }
     public function show_bp_report(Request $request)
@@ -256,12 +256,12 @@ class AdminController extends Controller
              'to_date'=>'required'
 
         ]);
-         
+
             $from_date = date("Y-m-d", strtotime($request->from_date));
             $to_date = date("Y-m-d", strtotime($request->to_date."+1 days"));
             $brand_promoter_id = $request->brand_promoter;
             //$bp_name = user::where('id',$user_id)->first()->name;
-            
+
            //file_put_contents('test.txt',$from_date." ".$to_date);
            if($brand_promoter_id ==="All")
            {
@@ -279,11 +279,11 @@ class AdminController extends Controller
 
             $bp_report_credential =['from_date'=>$from_date,'to_date'=>$to_date,'brand_promoter_id'=>$brand_promoter_id];
             Session::put('bp_report_credential',$bp_report_credential);
-         
-           
+
+
 
             return view('admin.report-bp',['orders'=>$orders]);
-            
+
     }
     public function view_report_menue()
     {
@@ -301,7 +301,7 @@ class AdminController extends Controller
     {
        $order_id =$request->id;
        $order = order::where('id',$order_id)->first();
-       
+
        $source_of_lead = source_of_lead::get();
         return view('admin.edit_report',['order'=>$order,'source_of_leads'=>$source_of_lead]);
     }
@@ -339,7 +339,7 @@ class AdminController extends Controller
             }
             foreach($orders as $order)
             {
-                
+
                 $order['order_generator'] =  user::where('id',$order->order_generated_by)->first()->name;
                 if($order->delivery_partner !=NULL)
                 {
@@ -350,7 +350,7 @@ class AdminController extends Controller
                     $order['delivery_partner'] ="Not Assigned";
                 }
 
-                
+
             }
             $order_list = array();
             foreach($orders as $order)
@@ -376,14 +376,14 @@ class AdminController extends Controller
                 'Delivery Completed Data and Time'=>$order->order_completed_date_time,
                 'Delivery Status'=>$delivery_status]);
             }
-      
+
            Session::push('order_list',$order_list);
             return view('admin.report',['orders'=>$orders]);
-            
-            
 
-     
-    } 
+
+
+
+    }
 
     public function update_user_password(Request $request)
     {
@@ -398,7 +398,7 @@ class AdminController extends Controller
         return redirect()->route('show_all_user')->with('success','Password Update Successfully');
     }
     public function order_generate()
-    {   
+    {
         $source_of_lead = source_of_lead::get();
         $order = order::latest()->first();
         if($order)

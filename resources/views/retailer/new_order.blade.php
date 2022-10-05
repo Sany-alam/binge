@@ -85,7 +85,7 @@
                             <th>Customer Name</th>
                             <th>Ticket</th>
                             <th>Customer Phone number</th>
-                            <th style="word-break:break-all;width:200px">Customer Address</th>
+                            <th>Customer Address</th>
                             <th>Customer Instruction</th>
                             <th>Source of lead</th>
                             <th>Order Generator</th>

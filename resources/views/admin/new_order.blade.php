@@ -85,8 +85,8 @@
                             <th>Customer Name</th>
                             <th>Ticket</th>
                             <th>Customer Phone number</th>
-                            <th>Customer Address</th>
-                            <th>Customer Instruction</th>
+                            <th style="word-break:break-all;width:200px">Customer Address</th>
+                            <th style="word-break:break-all;width:200px" >Customer Instruction</th>
                             <th>Source of lead</th>
                             <th>Order Generator</th>
                             <th>Order Date and Time</th>
@@ -102,8 +102,8 @@
                         <td>{{$order->customer_name}}</td>
                         <td>{{$order->ticket_no}}</td>
                         <td>{{$order->customer_phone_no}}</td>
-                        <td>{{$order->customer_address}}</td>
-                        <td>{{$order->customer_instruction}}</td>
+                        <td style="word-break:break-all;width:200px"> {{$order->customer_address}}</td>
+                        <td style="word-break:break-all;width:200px">{{$order->customer_instruction}}</td>
                         <td>{{$order->source_of_lead}}</td>
                         <td>{{$order->order_generator}}</td>
                         <td>{{$order->order_generated_date_time}}</td>
@@ -139,12 +139,14 @@
         });
 
         $('.table').dataTable({
-            searching: false,
+         
             paging: true,
             info: false,
             sScrollX: "100%",
             sScrollXInner: "100%",
             bJQueryUI: true,
+            autoWidth: true
+           
         });
     })
 

@@ -87,6 +87,12 @@
                     </div>
                 </a>
 
+                
+
+            </div>
+            <div class="row main_page_row">
+               
+
                 <a href="{{url('admin/bp-tracker')}}">
                     <div class="col-md-2 col-sm-2 col-2">
                         <div class="shadow p-4 mb-2 main_page_button">
@@ -101,6 +107,50 @@
 
                     </div>
                 </a>
+                <a href="{{url('admin/bp-tracker')}}">
+                    <div class="col-md-2 col-sm-2 col-2">
+                        <div class="shadow p-4 mb-2 main_page_button">
+                            <div class="image_section text-center">
+                                <img src="{{asset('assets')}}/image/user_creation.png" class="img-fluid">
+                            </div>
+
+                        </div>
+                        <div class="button_text_section">
+                        <a href="#"  class="text-decoration-none"> <p class="text-center text-uppercase button_text">Retail Tracker</p></a>
+                        </div>
+
+                    </div>
+                </a>
+
+                <a href="{{url('admin/bp-tracker')}}">
+                    <div class="col-md-2 col-sm-2 col-2">
+                        <div class="shadow p-4 mb-2 main_page_button">
+                            <div class="image_section text-center">
+                                <img src="{{asset('assets')}}/image/user_creation.png" class="img-fluid">
+                            </div>
+
+                        </div>
+                        <div class="button_text_section">
+                        <a href="#"  class="text-decoration-none"> <p class="text-center text-uppercase button_text">Source Of Lead</p></a>
+                        </div>
+
+                    </div>
+                </a>
+
+                <div class="col-md-2 col-sm-2 col-2">
+                        <div class="shadow p-4 mb-2 main_page_button">
+                            <div class="image_section text-center">
+                                <img src="{{asset('assets')}}/image/user_creation.png" class="img-fluid">
+                            </div>
+
+                        </div>
+                        <div class="button_text_section">
+                        <a href="#"  class="text-decoration-none"> <p class="text-center text-uppercase button_text">Bp & Retail Source</p></a>
+                        </div>
+
+                    </div>
+                </a>
+
 
             </div>
 

@@ -88,9 +88,9 @@
                             <th>Customer Name</th>
                             <th>Customer Phone number</th>
                             <th>Ticket</th>
-                            <th>Customer Address</th>
-                            <th>Customer Instruction</th>
-                            <th>Admin Instruction</th>
+                            <th style="word-break:break-all;width:200px">Customer Address</th>
+                            <th style="word-break:break-all;width:200px">Customer Instruction</th>
+                            <th style="word-break:break-all;width:200px">Admin Instruction</th>
                             <th>Source of lead</th>
                             <th>Order Generator</th>
                             <th>Delivery Partner</th>
@@ -107,9 +107,9 @@
                          <td>{{$order->customer_name}}</td>
                          <td>{{$order->customer_phone_no}}</td>
                          <td>{{$order->ticket_no}}</td>
-                         <td>{{$order->customer_address}}</td>
-                         <td>{{$order->customer_instruction}}</td>
-                         <td>{{$order->admin_instruction}}</td>
+                         <td style="word-break:break-all;width:200px">{{$order->customer_address}}</td>
+                         <td style="word-break:break-all;width:200px">{{$order->customer_instruction}}</td>
+                         <td style="word-break:break-all;width:200px">{{$order->admin_instruction}}</td>
                          <td>{{$order->source_of_lead}}</td>
                          <td>{{$order->order_generator}}</td>
                          <td>{{$order->delivery_partner}}</td>
@@ -147,7 +147,7 @@ $(function() {
         $('.table').dataTable({
             searching: true,
             paging: true,
-            info: false,
+            info: true,
             sScrollX: "100%",
             sScrollXInner: "110%",
             bJQueryUI: true,

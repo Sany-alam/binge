@@ -76,3 +76,19 @@ Route::group(['prefix' => 'bp'], function () {
     // Route::view('/report', 'admin.report');
     // Route::view('/order-generator', 'admin.order_generator');
 });
+
+Route::group(['prefix' => 'retailer'], function () {
+    Route::post('submit_order','RetailerController@submit_order')->name('submit_record_retailer');
+    Route::view('/', 'retailer.home');
+    Route::get('order-generate', 'RetailerController@order_generate')->name('order-generate-retailer');
+    Route::view('/pending-order', 'salesman.pending_order');
+    Route::view('report', 'retailer.report_menue');
+    Route::post('show_report_bp','RetailerController@show_report')->name('show_report_retailer');
+    Route::get('edit_report/{id}','RetailerController@edit_report');
+    
+    Route::post('submit_edit_report_bp','RetailerController@submit_edit_report')->name('submit_edit_report_retailer');
+    // Route::view('/user-creation', 'admin.user_creation');
+    // Route::view('/new-order', 'admin.new_order');
+    // Route::view('/report', 'admin.report');
+    // Route::view('/order-generator', 'admin.order_generator');
+});
